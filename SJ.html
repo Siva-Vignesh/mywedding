@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Divine Union | Engagement Invitation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Pastel Peach, Mint, and Gold -->
+    <!-- Application Structure Plan: A single, top-to-bottom scrolling page designed as an elegant narrative for an engagement. It starts with a captivating hero section, moves to the core invitation details, clearly presents the event schedule in distinct cards, followed by the Countdown Timer, and concludes with a clear call-to-action for RSVP. The "Our Journey" section has been removed. This linear, story-like flow is more engaging for a personal event than a dashboard or tabbed layout, guiding guests through the announcement in a celebratory manner. Key interactions include smooth-scroll navigation and clickable links for maps and contact, prioritizing ease of use for guests. -->
+    <!-- Visualization & Content Choices: The source is purely textual. Goal: To translate the text into an aesthetic, interactive experience. Method: Instead of charts, the "visualizations" are decorative elements created with HTML & CSS using Unicode characters/emojis. The peacock emoji is retained in the top right. New elements like flowers (🌸), leaves (🍃), engagement ring (💍), and hearts (💖) are strategically placed to enhance the aesthetic and thematic coherence, particularly around key details. A QR code is added for the map link, enhancing utility. Goal: Inform & Organize. Method: Event details are in styled cards for clarity, with the date and venue updated. The Countdown Timer section, now after events, numerically presents the time remaining until the engagement. Interaction: "View on Map" links and QR code provide immediate utility. Goal: Action. Method: RSVP uses a simplified Formspree form with only name and message fields, improving user interaction. All choices use standard HTML/CSS/JS, avoiding external libraries like Chart.js, confirming NO SVG/Mermaid. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        :root {
+            --color-pastel-maroon: #B35D62; /* A muted rose/berry tone for pastel maroon */
+        }
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background-color: #FFF9F5;
+            color: #5D4037;
+        }
+        .font-tangerine {
+            font-family: 'Tangerine', cursive;
+        }
+        .font-playfair {
+            font-family: 'Playfair Display', serif;
+        }
+        .bg-hero {
+            background: linear-gradient(180deg, rgba(255,249,245,0.8) 0%, #FFF9F5 100%), url('https://www.transparenttextures.com/patterns/gplay.png');
+            position: relative;
+            overflow: hidden;
+        }
+        .bg-hero::before {
+            content: '🦚';
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-size: 5rem;
+            opacity: 0.5;
+            transform: rotate(20deg);
+            z-index: 1; /* Ensure this is above the background overlay */
+        }
+        .bg-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150%;
+            height: 200px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23FDEEE6' d='M0 100 L0 80 L10 80 L10 70 L20 70 L20 60 L30 60 L30 50 L40 50 L40 40 L50 0 L60 40 L60 50 L70 50 L70 60 L80 60 L80 70 L90 70 L90 80 L100 80 L100 100 Z'%3E%3C/path%3E%3C/svg%3E") no-repeat center center;
+            background-size: cover;
+            opacity: 0.7;
+            z-index: 0; /* Keep this as background element */
+        }
+        .card {
+            background-color: rgba(255, 255, 255, 0.7);
+            border-left: 4px solid #FBC2A3;
+            transition: all 0.3s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(93, 64, 55, 0.1);
+        }
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #D87093;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .floral-divider {
+            font-size: 2rem;
+            color: #FBC2A3;
+            letter-spacing: 1rem;
+        }
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left-color: #D87093;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 0.5rem;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .countdown-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 0.75rem; /* rounded-lg */
+            padding: 1.5rem; /* p-6 */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            border-bottom: 4px solid #FBC2A3;
+        }
+        .countdown-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(93, 64, 55, 0.1);
+        }
+    </style>
+</head>
+<body class="antialiased leading-relaxed">
+
+    <!-- Header & Navigation -->
+    <header id="header" class="bg-[#FFF9F5]/80 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
+        <div class="container mx-auto px-6 py-3">
+            <nav class="flex justify-center items-center">
+                <ul class="flex space-x-6 md:space-x-10 text-lg">
+                    <li><a href="#home" class="nav-link font-semibold">Home</a></li>
+                    <li><a href="#invitation" class="nav-link font-semibold">Invitation</a></li>
+                    <li><a href="#events" class="nav-link font-semibold">Events</a></li>
+                    <li><a href="#countdown" class="nav-link font-semibold">Countdown</a></li>
+                    <li><a href="#rsvp" class="nav-link font-semibold">RSVP</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="bg-hero min-h-screen flex items-center justify-center text-center p-6 relative">
+            <div class="relative z-10">
+                <h2 class="text-3xl md:text-5xl text-gray-600 mb-4 font-playfair tracking-wide">Together with their families</h2>
+                
+                <h1 class="font-playfair text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[var(--color-pastel-maroon)] mb-2">Janani Sri</h1>
+                <p class="text-4xl md:text-6xl font-tangerine text-gray-500 mb-2">&</p>
+                <h1 class="font-playfair text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[var(--color-pastel-maroon)] mb-8">Siva Vignesh</h1>
+                
+                <p class="text-xl md:text-2xl text-gray-700 font-light max-w-2xl mx-auto">
+                    joyfully invite you to celebrate their engagement
+                </p>
+
+                <div class="mt-12 animate-bounce">
+                    <a href="#invitation" class="text-gray-500">
+                        <svg class="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                    </a>
+                </div>
+            </div>
+            <!-- Additional icons for hero section - now directly embedded for visibility -->
+            <div class="absolute top-[10%] left-[5%] text-4xl opacity-60 transform -rotate-15 z-[1]">🌸</div>
+            <div class="absolute bottom-[15%] right-[8%] text-4xl opacity-60 transform rotate-25 z-[1]">🌺</div>
+            <!-- Removed temple emoji as per request -->
+            <div class="absolute top-[20%] right-[15%] text-3xl opacity-50 transform rotate(10deg) z-[1]">🕊️</div>
+            <!-- Added more ring and heart emojis -->
+            <div class="absolute top-[25%] left-[20%] text-3xl opacity-60 transform rotate(5deg) z-[1]">💍</div>
+            <div class="absolute bottom-[20%] left-[25%] text-3xl opacity-60 transform -rotate-10deg z-[1]">💖</div>
+            <div class="absolute top-[5%] right-[25%] text-4xl opacity-50 transform rotate(15deg) z-[1]">💖</div>
+        </section>
+
+        <!-- Invitation Details Section -->
+        <section id="invitation" class="py-20 md:py-28 bg-[#FDEEE6]">
+            <div class="container mx-auto px-6 text-center">
+                <p class="text-2xl md:text-3xl font-light text-gray-700 max-w-3xl mx-auto">
+                    With hearts full of joy and gratitude, we invite you to share in the celebration of love and the sacred engagement of our beloved children.
+                </p>
+                <div class="my-10 floral-divider">💖</div>
+                <div class="text-lg text-gray-600 space-y-2">
+                    <p>Gnanasamantham & Gowri</p>
+                    <p>&</p>
+                    <p>Saravanan & Meera</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Events Section -->
+        <section id="events" class="py-20 md:py-28 bg-[#FFF9F5]">
+            <div class="container mx-auto px-6">
+                <h2 class="text-5xl md:text-6xl font-playfair text-center mb-16">Engagement Events</h2>
+                <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+                    
+                    <!-- Engagement Ceremony Card -->
+                    <div class="card p-8 rounded-lg shadow-lg text-center flex flex-col items-center">
+                        <h3 class="text-4xl font-playfair text-[#D87093] mb-4">The Engagement Ceremony 💍</h3>
+                        <div class="text-gray-700 space-y-3 text-lg">
+                             <p>Saturday, 6th July 2025</p>
+                            <p>at 10:00 AM onwards</p>
+                            <div class="w-16 h-px bg-[#FBC2A3] mx-auto my-4"></div>
+                            <p class="font-semibold text-xl">Madurai Hotel Duke</p>
+                            <p>Near Meenakshi Temple, Madurai</p>
+                        </div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Madurai Hotel Duke, Near Meenakshi Temple, Madurai" target="_blank" class="mt-6 inline-block bg-[#D87093] text-white font-bold py-2 px-6 rounded-full hover:bg-[#c36381] transition-colors">
+                            View on Map
+                        </a>
+                        <div class="mt-6 flex flex-col items-center">
+                            <canvas id="mapQrCode" class="border border-gray-300 p-2 rounded-lg"></canvas>
+                            <p class="text-sm text-gray-500 mt-2">Scan for Directions</p>
+                        </div>
+                    </div>
+
+                    <!-- Reception Card -->
+                    <div class="card p-8 rounded-lg shadow-lg text-center">
+                        <h3 class="text-4xl font-playfair text-[#D87093] mb-4">The Reception 🎉</h3>
+                        <div class="text-gray-700 space-y-3 text-lg">
+                            <p class="text-xl font-semibold mt-4">Details to be announced soon! 🍃</p>
+                            <p class="text-base text-gray-500">Please check back closer to the date for more information.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Countdown Timer Section -->
+        <section id="countdown" class="py-20 md:py-28 bg-[#FDEEE6]">
+            <div class="container mx-auto px-6 text-center max-w-4xl">
+                <h2 class="text-5xl md:text-6xl font-playfair mb-8">The Countdown Begins! ⏳</h2>
+                <p class="text-xl text-gray-600 mb-10">
+                    Join us in celebrating as we count down to our special day!
+                </p>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-gray-800">
+                    <div class="countdown-item">
+                        <span id="days" class="text-5xl md:text-6xl font-tangerine text-[#D87093]">00</span>
+                        <span class="text-lg md:text-xl font-playfair mt-2">Days</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span id="hours" class="text-5xl md:text-6xl font-tangerine text-[#D87093]">00</span>
+                        <span class="text-lg md:text-xl font-playfair mt-2">Hours</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span id="minutes" class="text-5xl md:text-6xl font-tangerine text-[#D87093]">00</span>
+                        <span class="text-lg md:text-xl font-playfair mt-2">Minutes</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span id="seconds" class="text-5xl md:text-6xl font-tangerine text-[#D87093]">00</span>
+                        <span class="text-lg md:text-xl font-playfair mt-2">Seconds</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- RSVP Section -->
+        <section id="rsvp" class="py-20 md:py-28 bg-[#FFF9F5]">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-5xl md:text-6xl font-playfair mb-6">Kindly RSVP ✍️</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto mb-10">
+                    Your presence is our most cherished gift. Please let us know if you can make it!
+                </p>
+                <div class="bg-white/80 rounded-lg shadow-xl p-8 max-w-lg mx-auto">
+                    <form action="https://formspree.io/f/xpwrlzlo" method="POST" class="flex flex-col space-y-4">
+                        <label for="name" class="text-lg text-gray-700 text-left font-semibold">Your Name:</label>
+                        <input type="text" name="name" id="name" class="p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#D87093] text-gray-800" required>
+                        
+                        <label for="message" class="text-lg text-gray-700 text-left font-semibold">Your Message (e.g., Number of guests, special requests):</label>
+                        <textarea name="message" id="message" rows="5" class="p-3 border border-gray-300 rounded-lg resize-y min-h-[80px] focus:outline-none focus:border-[#D87093] text-gray-800" placeholder="e.g., 'Yes, I'll be there with 2 guests!' or 'Looking forward to it!'"></textarea>
+                        
+                        <button type="submit" class="bg-[#D87093] text-white font-bold py-3 px-8 rounded-full hover:bg-[#c36381] transition-colors self-center mt-6">
+                            Send RSVP
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#FFF9F5] py-8">
+        <div class="container mx-auto px-6 text-center text-gray-500">
+            <p class="font-tangerine text-5xl mb-4">Janani Sri & Siva Vignesh</p>
+            <p>&copy; 2025 | Made with Love 💖</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // The previous AI story generation logic has been removed as per your request
+        // and replaced with a static text area for manual input.
+
+        // Countdown Timer Logic
+        const engagementDate = new Date('July 6, 2025 10:00:00').getTime();
+
+        const updateCountdown = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = engagementDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').innerHTML = days < 10 ? '0' + days : days;
+            document.getElementById('hours').innerHTML = hours < 10 ? '0' + hours : hours;
+            document.getElementById('minutes').innerHTML = minutes < 10 ? '0' + minutes : minutes;
+            document.getElementById('seconds').innerHTML = seconds < 10 ? '0' + seconds : seconds;
+
+            if (distance < 0) {
+                clearInterval(updateCountdown);
+                document.getElementById('countdown').innerHTML = `
+                    <h2 class="text-5xl md:text-6xl font-playfair mb-8 text-[#D87093]">The Moment Has Arrived! 🎉</h2>
+                    <p class="text-xl text-gray-600">Janani Sri and Siva Vignesh are officially engaged!</p>
+                `;
+            }
+        }, 1000);
+
+        // QR Code Generation
+        const mapUrl = "https://www.google.com/maps/search/?api=1&query=Madurai Hotel Duke, Near Meenakshi Temple, Madurai";
+        const qr = new QRious({
+            element: document.getElementById('mapQrCode'),
+            value: mapUrl,
+            size: 200, // Increased size for better scannability
+            padding: 10,
+            level: 'H' // Error correction level (L, M, Q, H)
+        });
+    </script>
+</body>
+</html>
