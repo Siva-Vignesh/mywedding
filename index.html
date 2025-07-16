@@ -110,6 +110,22 @@
             box-shadow: 0 6px 20px rgba(212, 163, 115, 0.4);
         }
         
+        .btn-secondary {
+            background-color: transparent;
+            color: #d4a373;
+            border: 2px solid #d4a373;
+            padding: 10px 28px;
+            border-radius: 30px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(212, 163, 115, 0.1);
+            transform: translateY(-2px);
+        }
+        
         .flower {
             position: absolute;
             pointer-events: none;
@@ -232,7 +248,7 @@
             border-radius: 50%;
         }
         
-        /* Horizontal Timeline Styles */
+        /* Timeline Styles */
         .timeline-container {
             position: relative;
             max-width: 1200px;
@@ -240,94 +256,34 @@
             padding: 20px 0;
         }
         
-        /* Horizontal timeline for desktop */
-        @media (min-width: 768px) {
-            .timeline-container {
-                display: flex;
-                justify-content: space-between;
-                align-items: flex-start;
-                padding: 60px 0 20px;
-            }
-            
-            .timeline-line {
-                position: absolute;
-                height: 4px;
-                background-color: #d4a373;
-                top: 60px;
-                left: 0;
-                right: 0;
-                z-index: 1;
-            }
-            
-            .timeline-item {
-                position: relative;
-                width: 30%;
-                z-index: 2;
-            }
-            
-            .timeline-item::before {
-                content: '';
-                position: absolute;
-                width: 20px;
-                height: 20px;
-                top: -50px;
-                left: 50%;
-                transform: translateX(-50%);
-                border-radius: 50%;
-                background: #fff;
-                border: 4px solid #d4a373;
-                z-index: 3;
-            }
+        .timeline-line {
+            position: absolute;
+            height: 4px;
+            background-color: #d4a373;
+            top: 60px;
+            left: 0;
+            right: 0;
+            z-index: 1;
         }
         
-        /* Vertical timeline for mobile */
-        @media (max-width: 767px) {
-            .timeline-container {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                padding: 20px 0;
-            }
-            
-            .timeline-line {
-                position: absolute;
-                width: 4px;
-                background-color: #d4a373;
-                top: 0;
-                bottom: 0;
-                left: 50%;
-                transform: translateX(-50%);
-                z-index: 1;
-            }
-            
-            .timeline-item {
-                position: relative;
-                width: 80%;
-                margin-bottom: 30px;
-                z-index: 2;
-            }
-            
-            .timeline-item::before {
-                content: '';
-                position: absolute;
-                width: 20px;
-                height: 20px;
-                top: 20px;
-                left: -30px;
-                border-radius: 50%;
-                background: #fff;
-                border: 4px solid #d4a373;
-                z-index: 3;
-            }
-            
-            .timeline-item:nth-child(even) {
-                align-self: flex-end;
-            }
-            
-            .timeline-item:nth-child(even)::before {
-                left: auto;
-                right: -30px;
-            }
+        .timeline-item {
+            position: relative;
+            width: 30%;
+            z-index: 2;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 50%;
+            background: #fff;
+            border: 4px solid #d4a373;
+            z-index: 3;
         }
         
         .timeline-content {
@@ -389,62 +345,18 @@
         }
         
         /* Photo Gallery Styles */
-        .photo-gallery {
-            background-color: #f0f2f5;
-            padding: 40px 0;
-        }
-        
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .gallery-item {
-            background-color: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .gallery-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-        }
-        
-        .gallery-image-container {
-            padding: 12px;
-            background-color: white;
-        }
-        
         .gallery-image {
             width: 100%;
             height: 250px;
             object-fit: cover;
             border-radius: 8px;
-            border: 8px solid white;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         
-        .gallery-content {
-            padding: 20px;
-            text-align: center;
-        }
-        
-        .gallery-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.25rem;
-            margin-bottom: 8px;
-            color: #333;
-        }
-        
-        .gallery-date {
-            color: #d4a373;
-            font-weight: 500;
-            margin-bottom: 10px;
+        .gallery-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         }
         
         /* Infinite Carousel Styles */
@@ -488,8 +400,6 @@
             }
         }
         
-        /* Continuous animation without pause on hover */
-        
         /* Add gradient overlays for smooth edges */
         .infinite-carousel-container::before,
         .infinite-carousel-container::after {
@@ -510,6 +420,304 @@
         .infinite-carousel-container::after {
             right: 0;
             background: linear-gradient(to left, rgba(249, 250, 251, 0.8), rgba(249, 250, 251, 0));
+        }
+        
+        /* Couple Section Styles */
+        .couple-container {
+            position: relative;
+            overflow: visible;
+        }
+        
+        .couple-connector {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            background-color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+        }
+        
+        .couple-card {
+            position: relative;
+            transition: all 0.3s ease;
+            z-index: 5;
+        }
+        
+        .couple-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .couple-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 70%, rgba(0,0,0,0.7) 100%);
+            border-radius: 12px;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .couple-card:hover::before {
+            opacity: 1;
+        }
+        
+        .couple-image-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .couple-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .couple-card:hover .couple-image {
+            transform: scale(1.05);
+        }
+        
+        .couple-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            color: white;
+            z-index: 2;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .couple-card:hover .couple-info {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .couple-name {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .couple-relation {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+        
+        .couple-parents {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+        
+        /* Event Card Styles */
+        .event-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .event-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .event-card-wedding {
+            background: linear-gradient(135deg, #f8bbd0 0%, #e91e63 100%);
+        }
+        
+        .event-card-reception {
+            background: linear-gradient(135deg, #90caf9 0%, #1976d2 100%);
+        }
+        
+        .event-card-inner {
+            background-color: rgba(255, 255, 255, 0.9);
+            margin: 3px;
+            border-radius: 14px;
+            height: calc(100% - 6px);
+            padding: 25px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .event-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        
+        .wedding-icon {
+            background-color: rgba(233, 30, 99, 0.1);
+            color: #e91e63;
+        }
+        
+        .reception-icon {
+            background-color: rgba(25, 118, 210, 0.1);
+            color: #1976d2;
+        }
+        
+        .event-title {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .event-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .event-detail-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .wedding-detail-icon {
+            background-color: rgba(233, 30, 99, 0.1);
+            color: #e91e63;
+        }
+        
+        .reception-detail-icon {
+            background-color: rgba(25, 118, 210, 0.1);
+            color: #1976d2;
+        }
+        
+        .event-detail-text {
+            flex-grow: 1;
+        }
+        
+        .event-detail-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.7;
+            margin-bottom: 3px;
+        }
+        
+        .event-detail-value {
+            font-weight: 600;
+        }
+        
+        .event-card-wedding .btn-primary {
+            background-color: #e91e63;
+            box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+        }
+        
+        .event-card-wedding .btn-primary:hover {
+            background-color: #d81b60;
+            box-shadow: 0 6px 20px rgba(233, 30, 99, 0.4);
+        }
+        
+        .event-card-reception .btn-primary {
+            background-color: #1976d2;
+            box-shadow: 0 4px 15px rgba(25, 118, 210, 0.3);
+        }
+        
+        .event-card-reception .btn-primary:hover {
+            background-color: #1565c0;
+            box-shadow: 0 6px 20px rgba(25, 118, 210, 0.4);
+        }
+        
+        /* Gift Registry Styles */
+        .gift-option {
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .gift-option:hover {
+            border-color: #d4a373;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .gift-option-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .gift-option-icon {
+            width: 30px;
+            height: 30px;
+            background-color: rgba(212, 163, 115, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            color: #d4a373;
+        }
+        
+        /* Story Section Styles */
+        .story-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .story-content {
+            padding: 30px;
+            background-color: #fff;
+        }
+        
+        .story-moment {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #e0e0e0;
+        }
+        
+        .story-moment:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .story-date {
+            color: #d4a373;
+            font-weight: 600;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .story-title {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 8px;
+            font-size: 1.2rem;
+        }
+        
+        .story-description {
+            font-size: 0.9rem;
+            color: #666;
         }
         
         @media (max-width: 768px) {
@@ -555,15 +763,28 @@
                 min-width: 60px;
                 margin-bottom: 10px;
             }
+            
+            .couple-connector {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .couple-image {
+                height: 300px;
+            }
+            
+            .story-images {
+                height: 200px;
+            }
         }
     </style>
-<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.16 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.container{width:100%}@media (min-width: 640px){.container{max-width:640px}}@media (min-width: 768px){.container{max-width:768px}}@media (min-width: 1024px){.container{max-width:1024px}}@media (min-width: 1280px){.container{max-width:1280px}}@media (min-width: 1536px){.container{max-width:1536px}}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0px}.-bottom-5{bottom:-1.25rem}.-left-5{left:-1.25rem}.-right-5{right:-1.25rem}.-top-5{top:-1.25rem}.bottom-10{bottom:2.5rem}.left-10{left:2.5rem}.left-5{left:1.25rem}.right-1\/4{right:25%}.right-10{right:2.5rem}.right-5{right:1.25rem}.top-1\/4{top:25%}.top-10{top:2.5rem}.top-5{top:1.25rem}.z-0{z-index:0}.z-10{z-index:10}.mx-auto{margin-left:auto;margin-right:auto}.mb-1{margin-bottom:0.25rem}.mb-10{margin-bottom:2.5rem}.mb-16{margin-bottom:4rem}.mb-2{margin-bottom:0.5rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.ml-2{margin-left:0.5rem}.mr-2{margin-right:0.5rem}.mr-3{margin-right:0.75rem}.mt-10{margin-top:2.5rem}.mt-2{margin-top:0.5rem}.block{display:block}.inline-block{display:inline-block}.flex{display:flex}.grid{display:grid}.h-16{height:4rem}.h-40{height:10rem}.h-full{height:100%}.min-h-screen{min-height:100vh}.w-16{width:4rem}.w-40{width:10rem}.w-full{width:100%}.max-w-2xl{max-width:42rem}.max-w-3xl{max-width:48rem}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-10{gap:2.5rem}.gap-8{gap:2rem}.space-x-4 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(1rem * var(--tw-space-x-reverse));margin-left:calc(1rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.border{border-width:1px}.border-blue-100{--tw-border-opacity:1;border-color:rgb(219 234 254 / var(--tw-border-opacity, 1))}.border-pink-100{--tw-border-opacity:1;border-color:rgb(252 231 243 / var(--tw-border-opacity, 1))}.bg-blue-100{--tw-bg-opacity:1;background-color:rgb(219 234 254 / var(--tw-bg-opacity, 1))}.bg-gray-100{--tw-bg-opacity:1;background-color:rgb(243 244 246 / var(--tw-bg-opacity, 1))}.bg-gray-200{--tw-bg-opacity:1;background-color:rgb(229 231 235 / var(--tw-bg-opacity, 1))}.bg-gray-50{--tw-bg-opacity:1;background-color:rgb(249 250 251 / var(--tw-bg-opacity, 1))}.bg-gray-800{--tw-bg-opacity:1;background-color:rgb(31 41 55 / var(--tw-bg-opacity, 1))}.bg-pink-100{--tw-bg-opacity:1;background-color:rgb(252 231 243 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-gradient-to-br{background-image:linear-gradient(to bottom right, var(--tw-gradient-stops))}.from-blue-50{--tw-gradient-from:#eff6ff var(--tw-gradient-from-position);--tw-gradient-to:rgb(239 246 255 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-pink-50{--tw-gradient-from:#fdf2f8 var(--tw-gradient-from-position);--tw-gradient-to:rgb(253 242 248 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.to-indigo-50{--tw-gradient-to:#eef2ff var(--tw-gradient-to-position)}.to-rose-50{--tw-gradient-to:#fff1f2 var(--tw-gradient-to-position)}.object-cover{object-fit:cover}.p-3{padding:0.75rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.p-8{padding:2rem}.px-4{padding-left:1rem;padding-right:1rem}.py-10{padding-top:2.5rem;padding-bottom:2.5rem}.py-12{padding-top:3rem;padding-bottom:3rem}.text-left{text-align:left}.text-center{text-align:center}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-5xl{font-size:3rem;line-height:1}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-medium{font-weight:500}.text-blue-500{--tw-text-opacity:1;color:rgb(59 130 246 / var(--tw-text-opacity, 1))}.text-blue-700{--tw-text-opacity:1;color:rgb(29 78 216 / var(--tw-text-opacity, 1))}.text-blue-800{--tw-text-opacity:1;color:rgb(30 64 175 / var(--tw-text-opacity, 1))}.text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175 / var(--tw-text-opacity, 1))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity, 1))}.text-gray-600{--tw-text-opacity:1;color:rgb(75 85 99 / var(--tw-text-opacity, 1))}.text-gray-700{--tw-text-opacity:1;color:rgb(55 65 81 / var(--tw-text-opacity, 1))}.text-gray-800{--tw-text-opacity:1;color:rgb(31 41 55 / var(--tw-text-opacity, 1))}.text-pink-500{--tw-text-opacity:1;color:rgb(236 72 153 / var(--tw-text-opacity, 1))}.text-pink-700{--tw-text-opacity:1;color:rgb(190 24 93 / var(--tw-text-opacity, 1))}.text-pink-800{--tw-text-opacity:1;color:rgb(157 23 77 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-shadow{transition-property:box-shadow;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-300{transition-duration:300ms}.hover\:shadow-lg:hover{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}@media (min-width: 768px){.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:text-2xl{font-size:1.5rem;line-height:2rem}.md\:text-4xl{font-size:2.25rem;line-height:2.5rem}.md\:text-5xl{font-size:3rem;line-height:1}.md\:text-7xl{font-size:4.5rem;line-height:1}.md\:text-xl{font-size:1.25rem;line-height:1.75rem}}@media (min-width: 1024px){.lg\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}}</style></head>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.16 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.container{width:100%}@media (min-width: 640px){.container{max-width:640px}}@media (min-width: 768px){.container{max-width:768px}}@media (min-width: 1024px){.container{max-width:1024px}}@media (min-width: 1280px){.container{max-width:1280px}}@media (min-width: 1536px){.container{max-width:1536px}}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0px}.bottom-10{bottom:2.5rem}.left-10{left:2.5rem}.right-1\/4{right:25%}.right-10{right:2.5rem}.top-1\/4{top:25%}.top-10{top:2.5rem}.z-0{z-index:0}.z-10{z-index:10}.mx-auto{margin-left:auto;margin-right:auto}.mb-10{margin-bottom:2.5rem}.mb-2{margin-bottom:0.5rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.mr-1{margin-right:0.25rem}.mr-2{margin-right:0.5rem}.mt-10{margin-top:2.5rem}.mt-12{margin-top:3rem}.mt-16{margin-top:4rem}.mt-3{margin-top:0.75rem}.mt-6{margin-top:1.5rem}.block{display:block}.inline-block{display:inline-block}.flex{display:flex}.grid{display:grid}.h-full{height:100%}.min-h-screen{min-height:100vh}.w-full{width:100%}.max-w-2xl{max-width:42rem}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.space-x-4 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(1rem * var(--tw-space-x-reverse));margin-left:calc(1rem * calc(1 - var(--tw-space-x-reverse)))}.overflow-hidden{overflow:hidden}.rounded-lg{border-radius:0.5rem}.bg-blue-50{--tw-bg-opacity:1;background-color:rgb(239 246 255 / var(--tw-bg-opacity, 1))}.bg-gray-50{--tw-bg-opacity:1;background-color:rgb(249 250 251 / var(--tw-bg-opacity, 1))}.bg-gray-800{--tw-bg-opacity:1;background-color:rgb(31 41 55 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.object-cover{object-fit:cover}.p-4{padding:1rem}.p-6{padding:1.5rem}.p-8{padding:2rem}.px-4{padding-left:1rem;padding-right:1rem}.py-10{padding-top:2.5rem;padding-bottom:2.5rem}.py-12{padding-top:3rem;padding-bottom:3rem}.text-left{text-align:left}.text-center{text-align:center}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-5xl{font-size:3rem;line-height:1}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.font-medium{font-weight:500}.italic{font-style:italic}.text-blue-500{--tw-text-opacity:1;color:rgb(59 130 246 / var(--tw-text-opacity, 1))}.text-blue-800{--tw-text-opacity:1;color:rgb(30 64 175 / var(--tw-text-opacity, 1))}.text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175 / var(--tw-text-opacity, 1))}.text-gray-600{--tw-text-opacity:1;color:rgb(75 85 99 / var(--tw-text-opacity, 1))}.text-gray-700{--tw-text-opacity:1;color:rgb(55 65 81 / var(--tw-text-opacity, 1))}.text-pink-800{--tw-text-opacity:1;color:rgb(157 23 77 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}@media (min-width: 768px){.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:text-2xl{font-size:1.5rem;line-height:2rem}.md\:text-4xl{font-size:2.25rem;line-height:2.5rem}.md\:text-5xl{font-size:3rem;line-height:1}.md\:text-7xl{font-size:4.5rem;line-height:1}.md\:text-xl{font-size:1.25rem;line-height:1.75rem}}</style></head>
 <body>
     <!-- Particles -->
-    <div id="particles"><div class="particle" style="width: 19.516px; height: 19.516px; background-color: rgb(212, 163, 115); left: 62.8739%; top: 89.9825%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 13.0689px; height: 13.0689px; background-color: rgb(254, 250, 224); left: 51.6453%; top: 65.976%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 12.7672px; height: 12.7672px; background-color: rgb(254, 250, 224); left: 0.344562%; top: 78.7197%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 13.4646px; height: 13.4646px; background-color: rgb(233, 237, 201); left: 79.8794%; top: 79.6316%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 19.9563px; height: 19.9563px; background-color: rgb(233, 237, 201); left: 73.8881%; top: 14.3237%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 9.65079px; height: 9.65079px; background-color: rgb(254, 250, 224); left: 21.8665%; top: 23.0163%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 19.6209px; height: 19.6209px; background-color: rgb(254, 250, 224); left: 31.9886%; top: 33.0322%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 19.531px; height: 19.531px; background-color: rgb(212, 163, 115); left: 38.4545%; top: 15.4333%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 13.3445px; height: 13.3445px; background-color: rgb(254, 250, 224); left: 22.0899%; top: 83.0374%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 14.5495px; height: 14.5495px; background-color: rgb(212, 163, 115); left: 72.1951%; top: 0.114448%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 10.5445px; height: 10.5445px; background-color: rgb(254, 250, 224); left: 1.79511%; top: 69.3057%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 6.34702px; height: 6.34702px; background-color: rgb(254, 250, 224); left: 73.947%; top: 65.1862%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 5.22927px; height: 5.22927px; background-color: rgb(233, 237, 201); left: 2.0392%; top: 12.7339%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 8.83606px; height: 8.83606px; background-color: rgb(233, 237, 201); left: 24.4094%; top: 67.6593%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 18.43px; height: 18.43px; background-color: rgb(212, 163, 115); left: 41.5177%; top: 96.662%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 18.4337px; height: 18.4337px; background-color: rgb(254, 250, 224); left: 83.6371%; top: 37.2266%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 15.3999px; height: 15.3999px; background-color: rgb(212, 163, 115); left: 81.7756%; top: 62.5376%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 18.8729px; height: 18.8729px; background-color: rgb(212, 163, 115); left: 36.6945%; top: 37.6573%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 8.77206px; height: 8.77206px; background-color: rgb(233, 237, 201); left: 73.4785%; top: 77.8599%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 11.2006px; height: 11.2006px; background-color: rgb(254, 250, 224); left: 60.2181%; top: 94.29%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 5.43495px; height: 5.43495px; background-color: rgb(212, 163, 115); left: 42.7038%; top: 53.4334%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 9.89769px; height: 9.89769px; background-color: rgb(233, 237, 201); left: 43.1156%; top: 15.0621%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 13.5311px; height: 13.5311px; background-color: rgb(212, 163, 115); left: 24.5704%; top: 15.9204%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 9.21893px; height: 9.21893px; background-color: rgb(233, 237, 201); left: 9.378%; top: 70.3315%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 7.39312px; height: 7.39312px; background-color: rgb(233, 237, 201); left: 50.9968%; top: 67.406%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 17.0036px; height: 17.0036px; background-color: rgb(212, 163, 115); left: 11.649%; top: 18.0217%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 18.0421px; height: 18.0421px; background-color: rgb(212, 163, 115); left: 35.8642%; top: 48.2616%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 5.29814px; height: 5.29814px; background-color: rgb(250, 237, 205); left: 45.2491%; top: 72.1778%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 7.22636px; height: 7.22636px; background-color: rgb(212, 163, 115); left: 43.3212%; top: 91.1602%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 7.82424px; height: 7.82424px; background-color: rgb(254, 250, 224); left: 46.562%; top: 58.4901%; transform: translate(0px, 0px);"></div></div>
+    <div id="particles"><div class="particle" style="width: 8.56363px; height: 8.56363px; background-color: rgb(212, 163, 115); left: 51.6326%; top: 30.5312%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 8.27767px; height: 8.27767px; background-color: rgb(250, 237, 205); left: 40.0071%; top: 89.4406%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 5.72985px; height: 5.72985px; background-color: rgb(250, 237, 205); left: 79.0949%; top: 85.5478%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 6.04898px; height: 6.04898px; background-color: rgb(233, 237, 201); left: 75.2431%; top: 49.7073%; transform: translate(-5.7441px, 6.06476px);"></div><div class="particle" style="width: 5.30765px; height: 5.30765px; background-color: rgb(254, 250, 224); left: 35.0838%; top: 23.2616%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 14.2774px; height: 14.2774px; background-color: rgb(254, 250, 224); left: 19.5276%; top: 86.0815%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 12.4124px; height: 12.4124px; background-color: rgb(250, 237, 205); left: 18.3389%; top: 53.8234%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 17.4498px; height: 17.4498px; background-color: rgb(212, 163, 115); left: 7.00454%; top: 45.149%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 12.7294px; height: 12.7294px; background-color: rgb(212, 163, 115); left: 79.5252%; top: 76.3354%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 5.89691px; height: 5.89691px; background-color: rgb(254, 250, 224); left: 38.6997%; top: 63.6665%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 13.3824px; height: 13.3824px; background-color: rgb(254, 250, 224); left: 38.0839%; top: 74.0903%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 13.2509px; height: 13.2509px; background-color: rgb(212, 163, 115); left: 69.8212%; top: 88.7075%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 5.02463px; height: 5.02463px; background-color: rgb(254, 250, 224); left: 30.6409%; top: 16.3533%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 5.1314px; height: 5.1314px; background-color: rgb(233, 237, 201); left: 16.8795%; top: 3.05034%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 7.25164px; height: 7.25164px; background-color: rgb(233, 237, 201); left: 41.6974%; top: 24.8136%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 5.00504px; height: 5.00504px; background-color: rgb(212, 163, 115); left: 26.4972%; top: 84.1171%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 13.8943px; height: 13.8943px; background-color: rgb(254, 250, 224); left: 13.905%; top: 32.7293%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 14.5201px; height: 14.5201px; background-color: rgb(233, 237, 201); left: 12.3122%; top: 30.0255%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 18.2965px; height: 18.2965px; background-color: rgb(254, 250, 224); left: 85.5218%; top: 52.5781%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 10.2356px; height: 10.2356px; background-color: rgb(250, 237, 205); left: 10.9526%; top: 78.141%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 6.564px; height: 6.564px; background-color: rgb(233, 237, 201); left: 45.2275%; top: 18.9639%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 17.8149px; height: 17.8149px; background-color: rgb(250, 237, 205); left: 22.9873%; top: 1.11739%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 5.22738px; height: 5.22738px; background-color: rgb(254, 250, 224); left: 13.1174%; top: 56.9694%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 18.1601px; height: 18.1601px; background-color: rgb(250, 237, 205); left: 95.6856%; top: 71.1682%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 19.4453px; height: 19.4453px; background-color: rgb(233, 237, 201); left: 98.0889%; top: 30.5479%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 17.3829px; height: 17.3829px; background-color: rgb(250, 237, 205); left: 3.49474%; top: 96.0593%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 15.2245px; height: 15.2245px; background-color: rgb(212, 163, 115); left: 69.4341%; top: 41.4143%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 19.4965px; height: 19.4965px; background-color: rgb(254, 250, 224); left: 43.901%; top: 5.44336%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 11.2022px; height: 11.2022px; background-color: rgb(254, 250, 224); left: 13.0921%; top: 62.5643%; transform: translate(0px, 0px);"></div><div class="particle" style="width: 15.0907px; height: 15.0907px; background-color: rgb(254, 250, 224); left: 58.1052%; top: 81.907%; transform: translate(2.35188px, -8.91846px);"></div></div>
     
     <!-- Header -->
-    <header class="header scrolled">
+    <header class="header">
         <div class="container mx-auto px-4 flex justify-between items-center">
             <a href="#" class="logo script-font">SJ</a>
             <button class="mobile-menu-btn">
@@ -572,7 +793,7 @@
             <nav class="nav-links flex items-center">
                 <a href="#home" class="nav-link">Home</a>
                 <a href="#couple" class="nav-link">Couple</a>
-                <a href="#gallery" class="nav-link">Our Story</a>
+                <a href="#story" class="nav-link">Our Story</a>
                 <a href="#event" class="nav-link">Event</a>
                 <a href="#rsvp" class="nav-link">RSVP</a>
             </nav>
@@ -608,19 +829,19 @@
             <!-- Countdown Timer -->
             <div class="countdown-container mb-10">
                 <div class="countdown-box">
-                    <span id="days" class="countdown-value">137</span>
+                    <span id="days" class="countdown-value">136</span>
                     <span class="countdown-label">Days</span>
                 </div>
                 <div class="countdown-box">
-                    <span id="hours" class="countdown-value">15</span>
+                    <span id="hours" class="countdown-value">19</span>
                     <span class="countdown-label">Hours</span>
                 </div>
                 <div class="countdown-box">
-                    <span id="minutes" class="countdown-value">32</span>
+                    <span id="minutes" class="countdown-value">14</span>
                     <span class="countdown-label">Minutes</span>
                 </div>
                 <div class="countdown-box">
-                    <span id="seconds" class="countdown-value">39</span>
+                    <span id="seconds" class="countdown-value">22</span>
                     <span class="countdown-label">Seconds</span>
                 </div>
             </div>
@@ -629,41 +850,46 @@
         </div>
     </section>
 
-    <!-- Couple Section -->
+    <!-- Couple Section - Redesigned -->
     <section id="couple" class="section bg-white">
         <div class="container mx-auto px-4 text-center">
             <h2 class="section-title serif-font text-3xl md:text-4xl">The Couple</h2>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mt-10">
-                <!-- Groom -->
-                <div class="p-6 rounded-lg shadow-md bg-gray-50 hover:shadow-lg transition-shadow duration-300 relative overflow-hidden">
-                    <div class="flower absolute top-5 right-5 floating-slow">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="#d4a373" opacity="0.2">
-                            <path d="M12,2C13.1,2 14,2.9 14,4C14,5.1 13.1,6 12,6C10.9,6 10,5.1 10,4C10,2.9 10.9,2 12,2M15.9,8.1C15.5,7.7 14.8,7 13.5,7C13.3,7 13.1,7 12.9,7.1C12.6,7.2 12.3,7.3 12,7.3C11.7,7.3 11.4,7.2 11.1,7.1C10.9,7 10.7,7 10.5,7C9.2,7 8.5,7.7 8.1,8.1C7.5,8.7 7,9.8 7,12C7,14.2 7.5,15.3 8.1,15.9C8.5,16.3 9.2,17 10.5,17C10.7,17 10.9,17 11.1,16.9C11.4,16.8 11.7,16.7 12,16.7C12.3,16.7 12.6,16.8 12.9,16.9C13.1,17 13.3,17 13.5,17C14.8,17 15.5,16.3 15.9,15.9C16.5,15.3 17,14.2 17,12C17,9.8 16.5,8.7 15.9,8.1Z"></path>
-                        </svg>
-                    </div>
-                    <div class="w-40 h-40 mx-auto mb-6 rounded-full overflow-hidden bg-gray-200">
-                        <img src="siva.jpg" alt="Siva Vignesh" class="profile-image">
-                    </div>
-                    <h3 class="text-2xl serif-font mb-2">Siva Vignesh</h3>
-                    <p class="text-gray-600 mb-4">Son of</p>
-                    <p class="text-gray-800 font-medium">Saravanan &amp; Meera</p>
+            <div class="couple-container relative mt-16">
+                <!-- Connector in the middle -->
+                <div class="couple-connector">
+                    <div class="script-font text-4xl text-d4a373">&amp;</div>
                 </div>
                 
-                <!-- Bride -->
-                <div class="p-6 rounded-lg shadow-md bg-gray-50 hover:shadow-lg transition-shadow duration-300 relative overflow-hidden">
-                    <div class="flower absolute top-5 left-5 floating">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="#d4a373" opacity="0.2">
-                            <path d="M12,2C13.1,2 14,2.9 14,4C14,5.1 13.1,6 12,6C10.9,6 10,5.1 10,4C10,2.9 10.9,2 12,2M15.9,8.1C15.5,7.7 14.8,7 13.5,7C13.3,7 13.1,7 12.9,7.1C12.6,7.2 12.3,7.3 12,7.3C11.7,7.3 11.4,7.2 11.1,7.1C10.9,7 10.7,7 10.5,7C9.2,7 8.5,7.7 8.1,8.1C7.5,8.7 7,9.8 7,12C7,14.2 7.5,15.3 8.1,15.9C8.5,16.3 9.2,17 10.5,17C10.7,17 10.9,17 11.1,16.9C11.4,16.8 11.7,16.7 12,16.7C12.3,16.7 12.6,16.8 12.9,16.9C13.1,17 13.3,17 13.5,17C14.8,17 15.5,16.3 15.9,15.9C16.5,15.3 17,14.2 17,12C17,9.8 16.5,8.7 15.9,8.1Z"></path>
-                        </svg>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Groom Card -->
+                    <div class="couple-card">
+                        <div class="couple-image-container">
+                            <img src="siva.jpg" alt="Siva Vignesh" class="couple-image">
+                            <div class="couple-info">
+                                <h3 class="couple-name serif-font">Siva Vignesh</h3>
+                                <p class="couple-relation">The Groom</p>
+                                <p class="couple-parents">Son of Saravanan &amp; Meera</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="w-40 h-40 mx-auto mb-6 rounded-full overflow-hidden bg-gray-200">
-                        <img src="janani.jpg" alt="Janani Sri" class="profile-image">
+                    
+                    <!-- Bride Card -->
+                    <div class="couple-card">
+                        <div class="couple-image-container">
+                            <img src="janani.jpg" alt="Janani Sri" class="couple-image">
+                            <div class="couple-info">
+                                <h3 class="couple-name serif-font">Janani Sri</h3>
+                                <p class="couple-relation">The Bride</p>
+                                <p class="couple-parents">Daughter of Gnanasambantham &amp; Gowri</p>
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="text-2xl serif-font mb-2">Janani Sri</h3>
-                    <p class="text-gray-600 mb-4">Daughter of</p>
-                    <p class="text-gray-800 font-medium">Gnanasambantham &amp; Gowri</p>
                 </div>
+            </div>
+            
+            <div class="mt-12 max-w-2xl mx-auto">
+                <p class="text-gray-700 italic serif-font text-lg">"Love is not about how many days, months, or years you have been together. Love is about how much you love each other every single day."</p>
             </div>
         </div>
     </section>
@@ -687,283 +913,271 @@
         </div>
     </section>
 
-    <!-- Our Love Story Section -->
-    <section id="gallery" class="section bg-gray-50">
+    <!-- Our Love Story Section - Redesigned -->
+    <section id="story" class="section bg-gray-50">
         <div class="container mx-auto px-4 text-center">
             <h2 class="section-title serif-font text-3xl md:text-4xl">Our Love Story</h2>
             
-            <!-- Timeline Section -->
-            <div class="mb-16">
-                <h3 class="text-2xl serif-font mb-8">How It All Began</h3>
-                
-                <div class="timeline-container relative">
-                    <!-- Timeline line - will be horizontal on desktop, vertical on mobile -->
-                    <div class="timeline-line"></div>
-                    
-                    <!-- Timeline Item 1 - TamilShaadi -->
-                    <div class="timeline-item">
-                        <div class="timeline-content">
-                            <div class="timeline-logo">
-                                <div class="tamilshaadi-logo">
-                                    Tamil<span>Shaadi</span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#d71921" class="ml-2">
-                                        <path d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                            <h3 class="text-lg font-medium mb-1">Matrimonial Connection</h3>
-                            <p class="text-gray-600 text-sm mb-2">April 14th, 2025</p>
-                            <p class="text-gray-700 text-sm">Where our story began with a simple profile match.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
+                <!-- Story Content - Left Side -->
+                <div class="story-container">
+                    <div class="story-content">
+                        <div class="story-moment">
+                            <p class="story-date">April 14th, 2025</p>
+                            <h3 class="story-title">Matrimonial Connection</h3>
+                            <p class="story-description">Where our story began with a simple profile match on TamilShaadi. A connection that would change our lives forever.</p>
                         </div>
-                    </div>
-                    
-                    <!-- Timeline Item 2 - Pizza Hut -->
-                    <div class="timeline-item">
-                        <div class="timeline-content">
-                            <div class="timeline-logo">
-                                <div class="pizzahut-logo">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="#ee3131" class="mr-2">
-                                        <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M7,10L12,15L17,10H7Z"></path>
-                                    </svg>
-                                    PIZZA HUT
-                                </div>
-                            </div>
-                            <h3 class="text-lg font-medium mb-1">First Meeting</h3>
-                            <p class="text-gray-600 text-sm mb-2">April 29th, 2025</p>
-                            <p class="text-gray-700 text-sm">Our first meet in pizza hut, lots of discussion, laugh, and some finger fries as well 😜</p>
+                        
+                        <div class="story-moment">
+                            <p class="story-date">April 29th, 2025</p>
+                            <h3 class="story-title">First Meeting</h3>
+                            <p class="story-description">Our first meet at Pizza Hut, filled with laughter, deep conversations, and some finger fries as well 😜</p>
                         </div>
-                    </div>
-                    
-                    <!-- Timeline Item 3 - Udipi Hotel -->
-                    <div class="timeline-item">
-                        <div class="timeline-content">
-                            <div class="timeline-logo">
-                                <div class="udipi-logo">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="#006400" class="mr-2">
-                                        <path d="M15.5,21L14,8H16.23L15.1,3.46L16.84,3L18.09,8H22L20.5,21H15.5M5,11H10A3,3 0 0,1 13,14H2A3,3 0 0,1 5,11M13,18A3,3 0 0,1 10,21H5A3,3 0 0,1 2,18H13M3,15H8L9.5,16.5L11,15H12A1,1 0 0,1 13,16A1,1 0 0,1 12,17H3A1,1 0 0,1 2,16A1,1 0 0,1 3,15Z"></path>
-                                    </svg>
-                                    UDIPI HOTEL
-                                </div>
-                            </div>
-                            <h3 class="text-lg font-medium mb-1">Second Meet</h3>
-                            <p class="text-gray-600 text-sm mb-2">May 20th, 2025</p>
-                            <p class="text-gray-700 text-sm">Received my first surprise gift which I never forget.</p>
+                        
+                        <div class="story-moment">
+                            <p class="story-date">May 20th, 2025</p>
+                            <h3 class="story-title">Second Meet</h3>
+                            <p class="story-description">At Udipi Hotel, where I received my first surprise gift which I'll never forget.</p>
+                        </div>
+                        
+                        <div class="story-moment">
+                            <p class="story-date">June 8th, 2025</p>
+                            <h3 class="story-title">Ponnu Paaka</h3>
+                            <p class="story-description">The traditional bride viewing ceremony with our families, where our bond was blessed by our elders.</p>
+                        </div>
+                        
+                        <div class="story-moment">
+                            <p class="story-date">July 6th, 2025</p>
+                            <h3 class="story-title">Engagement</h3>
+                            <p class="story-description">The day we officially promised ourselves to each other, surrounded by love and joy.</p>
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <!-- Photo Gallery Section -->
-            <div class="photo-gallery">
-                <h3 class="text-2xl serif-font mb-8">Special Moments</h3>
                 
-                <div class="gallery-grid">
-                    <!-- Gallery Item 1 - Ponnu Paaka -->
-                    <div class="gallery-item">
-                        <div class="gallery-image-container">
-                            <div class="gallery-image">
-                                <img src="1.jpg" alt="Ponnu Paaka" class="w-full h-full object-cover">
-                            </div>
-                        </div>
-                        <div class="gallery-content">
-                            <h3 class="gallery-title">Ponnu Paaka</h3>
-                            <p class="gallery-date">June 8th, 2025</p>
-                            <p class="text-gray-700">The traditional bride viewing ceremony with our families.</p>
-                        </div>
+                <!-- Story Images - Right Side -->
+                <div class="grid grid-cols-1 gap-6">
+                    <div>
+                        <img src="1.jpg" alt="Ponnu Paaka" class="gallery-image">
+                        <p class="text-center mt-3 font-medium">Ponnu Paaka Ceremony</p>
                     </div>
-                    
-                    <!-- Gallery Item 2 - Engagement -->
-                    <div class="gallery-item">
-                        <div class="gallery-image-container">
-                            <div class="gallery-image">
-                                <img src="2.jpg" alt="Engagement" class="w-full h-full object-cover">
-                            </div>
-                        </div>
-                        <div class="gallery-content">
-                            <h3 class="gallery-title">Engagement</h3>
-                            <p class="gallery-date">July 6th, 2025</p>
-                            <p class="text-gray-700">The day we officially promised ourselves to each other.</p>
-                        </div>
+                    <div>
+                        <img src="2.jpg" alt="Engagement" class="gallery-image">
+                        <p class="text-center mt-3 font-medium">Our Engagement</p>
                     </div>
-                    
-                    <!-- Gallery Item 3 - Wedding -->
-                    <div class="gallery-item">
-                        <div class="gallery-image-container">
-                            <div class="gallery-image">
-                                <img src="3.jpg" alt="Wedding" class="w-full h-full object-cover">
-                            </div>
-                        </div>
-                        <div class="gallery-content">
-                            <h3 class="gallery-title">Wedding</h3>
-                            <p class="gallery-date">November 30th, 2025</p>
-                            <p class="text-gray-700">The beginning of our forever journey together.</p>
-                        </div>
+                    <div>
+                        <img src="3.jpg" alt="Wedding" class="gallery-image">
+                        <p class="text-center mt-3 font-medium">Wedding Preview</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Event Details Section -->
+    <!-- Event Details Section - Redesigned -->
     <section id="event" class="section bg-white">
         <div class="container mx-auto px-4 text-center">
             <h2 class="section-title serif-font text-3xl md:text-4xl">Event Details</h2>
             
-            <div class="max-w-3xl mx-auto p-8 bg-white rounded-lg shadow-lg relative">
-                <div class="flower absolute -top-5 -left-5 floating-delay">
-                    <svg width="60" height="60" viewBox="0 0 24 24" fill="#d4a373" opacity="0.2">
-                        <path d="M12,2C13.1,2 14,2.9 14,4C14,5.1 13.1,6 12,6C10.9,6 10,5.1 10,4C10,2.9 10.9,2 12,2M15.9,8.1C15.5,7.7 14.8,7 13.5,7C13.3,7 13.1,7 12.9,7.1C12.6,7.2 12.3,7.3 12,7.3C11.7,7.3 11.4,7.2 11.1,7.1C10.9,7 10.7,7 10.5,7C9.2,7 8.5,7.7 8.1,8.1C7.5,8.7 7,9.8 7,12C7,14.2 7.5,15.3 8.1,15.9C8.5,16.3 9.2,17 10.5,17C10.7,17 10.9,17 11.1,16.9C11.4,16.8 11.7,16.7 12,16.7C12.3,16.7 12.6,16.8 12.9,16.9C13.1,17 13.3,17 13.5,17C14.8,17 15.5,16.3 15.9,15.9C16.5,15.3 17,14.2 17,12C17,9.8 16.5,8.7 15.9,8.1Z"></path>
-                    </svg>
-                </div>
-                <div class="flower absolute -bottom-5 -right-5 floating">
-                    <svg width="60" height="60" viewBox="0 0 24 24" fill="#d4a373" opacity="0.2">
-                        <path d="M12,2C13.1,2 14,2.9 14,4C14,5.1 13.1,6 12,6C10.9,6 10,5.1 10,4C10,2.9 10.9,2 12,2M15.9,8.1C15.5,7.7 14.8,7 13.5,7C13.3,7 13.1,7 12.9,7.1C12.6,7.2 12.3,7.3 12,7.3C11.7,7.3 11.4,7.2 11.1,7.1C10.9,7 10.7,7 10.5,7C9.2,7 8.5,7.7 8.1,8.1C7.5,8.7 7,9.8 7,12C7,14.2 7.5,15.3 8.1,15.9C8.5,16.3 9.2,17 10.5,17C10.7,17 10.9,17 11.1,16.9C11.4,16.8 11.7,16.7 12,16.7C12.3,16.7 12.6,16.8 12.9,16.9C13.1,17 13.3,17 13.5,17C14.8,17 15.5,16.3 15.9,15.9C16.5,15.3 17,14.2 17,12C17,9.8 16.5,8.7 15.9,8.1Z"></path>
-                    </svg>
-                </div>
-                
-                <!-- Two Event Cards Side by Side -->
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-                    <!-- Marriage Details - Left Side -->
-                    <div class="bg-gradient-to-br from-pink-50 to-rose-50 p-6 rounded-lg shadow-lg border border-pink-100">
-                        <div class="text-center mb-6">
-                            <div class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <i class="fas fa-heart text-pink-500 text-2xl"></i>
-                            </div>
-                            <h3 class="text-2xl serif-font mb-2 text-pink-800">Marriage Ceremony</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
+                <!-- Wedding Card -->
+                <div class="event-card event-card-wedding">
+                    <div class="event-card-inner">
+                        <div class="event-icon wedding-icon">
+                            <i class="fas fa-heart text-2xl"></i>
                         </div>
                         
-                        <div class="space-y-4 mb-6">
-                            <div class="flex items-center justify-center">
-                                <i class="fas fa-calendar-alt text-pink-500 mr-3 text-lg"></i>
-                                <div class="text-center">
-                                    <p class="font-medium text-pink-800">Date</p>
-                                    <p class="text-pink-700">November 30th, 2025</p>
-                                </div>
+                        <h3 class="event-title serif-font text-pink-800">Wedding Ceremony</h3>
+                        
+                        <div class="event-detail">
+                            <div class="event-detail-icon wedding-detail-icon">
+                                <i class="fas fa-calendar-alt"></i>
                             </div>
-                            <div class="flex items-center justify-center">
-                                <i class="fas fa-clock text-pink-500 mr-3 text-lg"></i>
-                                <div class="text-center">
-                                    <p class="font-medium text-pink-800">Time</p>
-                                    <p class="text-pink-700">10:30 AM</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-center">
-                                <i class="fas fa-map-marker-alt text-pink-500 mr-3 text-lg"></i>
-                                <div class="text-center">
-                                    <p class="font-medium text-pink-800">Venue</p>
-                                    <p class="text-pink-700">VMM Mahal, Madurai</p>
-                                </div>
+                            <div class="event-detail-text">
+                                <p class="event-detail-label">Date</p>
+                                <p class="event-detail-value text-pink-800">November 30th, 2025</p>
                             </div>
                         </div>
                         
-                        <div class="text-center">
-                            <a href="https://maps.google.com/?q=VMM+Mahal+Madurai+Tamil+Nadu" target="_blank" class="btn-primary inline-block mb-4">
+                        <div class="event-detail">
+                            <div class="event-detail-icon wedding-detail-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="event-detail-text">
+                                <p class="event-detail-label">Time</p>
+                                <p class="event-detail-value text-pink-800">10:30 AM</p>
+                            </div>
+                        </div>
+                        
+                        <div class="event-detail">
+                            <div class="event-detail-icon wedding-detail-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="event-detail-text">
+                                <p class="event-detail-label">Venue</p>
+                                <p class="event-detail-value text-pink-800">VMM Mahal, Madurai</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6 text-center">
+                            <a href="https://maps.google.com/?q=VMM+Mahal+Madurai+Tamil+Nadu" target="_blank" class="btn-primary">
                                 <i class="fas fa-map-marker-alt mr-2"></i> Get Directions
                             </a>
-                            <div class="bg-white p-3 rounded-lg inline-block">
-                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&amp;data=https://maps.google.com/?q=VMM+Mahal+Madurai+Tamil+Nadu" alt="QR Code for VMM Mahal" width="120" height="120">
-                                <p class="text-xs text-gray-600 mt-2">Scan for directions</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Reception Card -->
+                <div class="event-card event-card-reception">
+                    <div class="event-card-inner">
+                        <div class="event-icon reception-icon">
+                            <i class="fas fa-glass-cheers text-2xl"></i>
+                        </div>
+                        
+                        <h3 class="event-title serif-font text-blue-800">Reception</h3>
+                        
+                        <div class="event-detail">
+                            <div class="event-detail-icon reception-detail-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <div class="event-detail-text">
+                                <p class="event-detail-label">Date</p>
+                                <p class="event-detail-value text-blue-800">December 7th, 2025</p>
+                            </div>
+                        </div>
+                        
+                        <div class="event-detail">
+                            <div class="event-detail-icon reception-detail-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="event-detail-text">
+                                <p class="event-detail-label">Time</p>
+                                <p class="event-detail-value text-blue-800">7:00 PM</p>
+                            </div>
+                        </div>
+                        
+                        <div class="event-detail">
+                            <div class="event-detail-icon reception-detail-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="event-detail-text">
+                                <p class="event-detail-label">Venue</p>
+                                <p class="event-detail-value text-blue-800">Location details shared soon</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6 text-center">
+                            <div class="bg-blue-50 p-4 rounded-lg inline-block">
+                                <i class="fas fa-info-circle text-blue-500 mr-2"></i>
+                                <span class="text-blue-800">Reception venue details coming soon</span>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+            
+            <div class="mt-10 max-w-2xl mx-auto p-6 bg-gray-50 rounded-lg">
+                <p class="text-gray-700 mb-2">Join us for a traditional wedding ceremony followed by reception.</p>
+                <p class="text-gray-700">We would be honored to have you witness this sacred moment as we unite in marriage.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP Section with Gift Registry -->
+    <section id="rsvp" class="section gradient-bg">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="section-title serif-font text-3xl md:text-4xl">RSVP &amp; Gifts</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
+                <!-- RSVP Form -->
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <h3 class="text-2xl serif-font mb-6">Let Us Know You're Coming</h3>
                     
-                    <!-- Reception Details - Right Side -->
-                    <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-lg shadow-lg border border-blue-100">
-                        <div class="text-center mb-6">
-                            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <i class="fas fa-glass-cheers text-blue-500 text-2xl"></i>
-                            </div>
-                            <h3 class="text-2xl serif-font mb-2 text-blue-800">Reception</h3>
+                    <form action="https://formspree.io/f/xpwrlzlo" method="POST" class="text-left">
+                        <div class="mb-4">
+                            <label for="name" class="block mb-2 text-sm font-medium">Your Name</label>
+                            <input type="text" id="name" name="name" class="form-input" required="">
                         </div>
                         
-                        <div class="space-y-4 mb-6">
-                            <div class="flex items-center justify-center">
-                                <i class="fas fa-calendar-alt text-blue-500 mr-3 text-lg"></i>
-                                <div class="text-center">
-                                    <p class="font-medium text-blue-800">Date</p>
-                                    <p class="text-blue-700">November 30th, 2025</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-center">
-                                <i class="fas fa-clock text-blue-500 mr-3 text-lg"></i>
-                                <div class="text-center">
-                                    <p class="font-medium text-blue-800">Time</p>
-                                    <p class="text-blue-700">7:00 PM</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-center">
-                                <i class="fas fa-map-marker-alt text-blue-500 mr-3 text-lg"></i>
-                                <div class="text-center">
-                                    <p class="font-medium text-blue-800">Venue</p>
-                                    <p class="text-blue-700">Location details shared soon</p>
-                                </div>
-                            </div>
+                        <div class="mb-4">
+                            <label for="email" class="block mb-2 text-sm font-medium">Email Address</label>
+                            <input type="email" id="email" name="email" class="form-input" required="">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="guests" class="block mb-2 text-sm font-medium">Number of Guests</label>
+                            <select id="guests" name="guests" class="form-input">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5+">5+</option>
+                            </select>
                         </div>
                         
                         <div class="text-center">
-                            <div class="bg-gray-100 p-4 rounded-lg">
-                                <i class="fas fa-info-circle text-gray-500 text-2xl mb-2"></i>
-                                <p class="text-gray-600 text-sm">Reception venue details will be shared soon</p>
+                            <button type="submit" class="btn-primary">Send RSVP</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Gift Registry -->
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <h3 class="text-2xl serif-font mb-6">Gift Registry</h3>
+                    
+                    <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                        <p class="italic text-gray-700">"Your presence at our wedding is the greatest gift of all. However, if you wish to honor us with a gift, here are some options."</p>
+                    </div>
+                    
+                    <div class="gift-option">
+                        <div class="gift-option-title">
+                            <div class="gift-option-icon">
+                                <i class="fas fa-gift"></i>
                             </div>
+                            <span>Physical Gifts</span>
+                        </div>
+                        <p class="text-gray-600 text-sm">If you'd like to give a physical gift, we've registered at:</p>
+                        <div class="mt-3">
+                            <a href="#" class="btn-secondary text-sm">
+                                <i class="fas fa-external-link-alt mr-1"></i> View Registry
+                            </a>
                         </div>
                     </div>
-                </div>
-                
-                <div class="text-center">
-                    <div class="p-4 bg-gray-50 rounded-lg">
-                        <p class="text-gray-700 mb-2">Join us for a traditional wedding ceremony followed by reception.</p>
-                        <p class="text-gray-700">We would be honored to have you witness this sacred moment as we unite in marriage.</p>
+                    
+                    <div class="gift-option">
+                        <div class="gift-option-title">
+                            <div class="gift-option-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <span>Stock Gifts</span>
+                        </div>
+                        <p class="text-gray-600 text-sm">Help us invest in our future with stock gifts:</p>
+                        <div class="mt-3">
+                            <a href="https://www.stockgift.io" target="_blank" class="btn-secondary text-sm">
+                                <i class="fas fa-external-link-alt mr-1"></i> Stock Gift Platform
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="gift-option">
+                        <div class="gift-option-title">
+                            <div class="gift-option-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <span>Your Presence</span>
+                        </div>
+                        <p class="text-gray-600 text-sm">Remember, your presence is what matters most to us. We're just happy to have you share in our special day!</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- RSVP Section -->
-    <section id="rsvp" class="section gradient-bg">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="section-title serif-font text-3xl md:text-4xl">RSVP</h2>
-            
-            <div class="max-w-2xl mx-auto p-8 bg-white rounded-lg shadow-lg relative">
-                <div class="flower absolute -top-5 -right-5 floating">
-                    <svg width="60" height="60" viewBox="0 0 24 24" fill="#d4a373" opacity="0.2">
-                        <path d="M12,2C13.1,2 14,2.9 14,4C14,5.1 13.1,6 12,6C10.9,6 10,5.1 10,4C10,2.9 10.9,2 12,2M15.9,8.1C15.5,7.7 14.8,7 13.5,7C13.3,7 13.1,7 12.9,7.1C12.6,7.2 12.3,7.3 12,7.3C11.7,7.3 11.4,7.2 11.1,7.1C10.9,7 10.7,7 10.5,7C9.2,7 8.5,7.7 8.1,8.1C7.5,8.7 7,9.8 7,12C7,14.2 7.5,15.3 8.1,15.9C8.5,16.3 9.2,17 10.5,17C10.7,17 10.9,17 11.1,16.9C11.4,16.8 11.7,16.7 12,16.7C12.3,16.7 12.6,16.8 12.9,16.9C13.1,17 13.3,17 13.5,17C14.8,17 15.5,16.3 15.9,15.9C16.5,15.3 17,14.2 17,12C17,9.8 16.5,8.7 15.9,8.1Z"></path>
-                    </svg>
-                </div>
-                
-                <p class="mb-6">We would be delighted to have you join us on our special day. Please let us know if you can make it.</p>
-                
-                <form action="https://formspree.io/f/xpwrlzlo" method="POST" class="text-left">
-                    <div class="mb-4">
-                        <label for="name" class="block mb-2 text-sm font-medium">Your Name</label>
-                        <input type="text" id="name" name="name" class="form-input" required="">
-                    </div>
-                    
-                    <div class="mb-6">
-                        <label for="guests" class="block mb-2 text-sm font-medium">Number of Guests</label>
-                        <select id="guests" name="guests" class="form-input">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5+">5+</option>
-                        </select>
-                    </div>
-                    
-                    <div class="text-center">
-                        <button type="submit" class="btn-primary">Send RSVP</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
+    <!-- Footer - Updated -->
     <footer class="bg-gray-800 text-white py-10">
         <div class="container mx-auto px-4 text-center">
             <a href="#" class="logo script-font text-4xl text-d4a373 mb-6 inline-block">SJ</a>
             
-            <p class="mb-6">We can't wait to celebrate with you!</p>
+            <p class="mb-6 text-lg">"To love and to cherish, from this day forward."</p>
             
             <div class="flex justify-center space-x-4 mb-6">
                 <a href="#" class="text-white hover:text-d4a373 transition-colors">
@@ -977,7 +1191,8 @@
                 </a>
             </div>
             
-            <p class="text-gray-400 text-sm">© 2025 Siva &amp; Janani. All rights reserved.</p>
+            <p class="text-gray-400 text-sm mb-2">Thank you for being part of our journey</p>
+            <p class="text-gray-400 text-sm">© 2025 Siva &amp; Janani. Forever &amp; Always.</p>
         </div>
     </footer>
 
@@ -1095,6 +1310,6 @@
             });
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'95f993420192b2a0',t:'MTc1MjU4NTgxNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: none; visibility: hidden;"></iframe>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9600910c91787fa7',t:'MTc1MjY1OTEyNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: none; visibility: hidden;"></iframe>
 
 </body></html>
